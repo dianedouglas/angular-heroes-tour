@@ -4,10 +4,15 @@ import {Component} from 'angular2/core';
   selector: 'my-app',
   template: `
     <h1>{{ title }}</h1>
-    <h1>{{ hero.name }}</h1>
+    <h2>{{ hero.name }} details!</h2>
+    <div>
+      <label>name: </label>
+      <div><input [(ngModel)]="hero.name"></div>
+    </div>
   `
 })
-
+// one way data binding = display data in {{}}
+// 2 way data binding means we setup an input and an output at the same time using ngModel.
 export class AppComponent {
   public title = 'Tour of Heroes';
   public hero: Hero = {
