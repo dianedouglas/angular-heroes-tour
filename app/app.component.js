@@ -11,7 +11,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent;
+    var AppComponent, HEROES;
     return {
         setters:[
             function (core_1_1) {
@@ -21,21 +21,33 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Tour of Heroes';
-                    this.hero = {
-                        id: 1,
-                        name: 'Batman'
-                    };
+                    this.heroes = HEROES;
                 }
+                AppComponent.prototype.select = function (currentHero) {
+                    this.selectedHero = currentHero;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{ title }}</h1>\n    <h2>{{ hero.name }} details!</h2>\n    <div>\n      <label>name: </label>\n      <div><input [(ngModel)]=\"hero.name\"></div>\n    </div>\n  "
+                        template: "\n    <h1>{{ title }}</h1>\n    <h2>My Heroes</h2>\n    <ul class=\"heroes\">\n      <li *ngFor=\"#person of heroes\"\n        (click)=\"select(person)\">\n        <span>{{person.id}} </span>{{person.name}}\n      </li>\n    </ul>\n    <div *ngIf=\"selectedHero\">\n      <h2>{{ selectedHero.name }} details!</h2>\n      <div>\n        <label>name: </label>\n        <div><input [(ngModel)]=\"selectedHero.name\"></div>\n      </div>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             }());
             exports_1("AppComponent", AppComponent);
+            HEROES = [
+                { "id": 11, "name": "Mr. Nice" },
+                { "id": 12, "name": "Narco" },
+                { "id": 13, "name": "Bombasto" },
+                { "id": 14, "name": "Celeritas" },
+                { "id": 15, "name": "Magneta" },
+                { "id": 16, "name": "RubberMan" },
+                { "id": 17, "name": "Dynama" },
+                { "id": 18, "name": "Dr IQ" },
+                { "id": 19, "name": "Magma" },
+                { "id": 20, "name": "Tornado" }
+            ];
         }
     }
 });
