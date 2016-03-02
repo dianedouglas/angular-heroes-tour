@@ -7,7 +7,8 @@ import {Component} from 'angular2/core';
     <h2>My Heroes</h2>
     <ul class="heroes">
       <li *ngFor="#person of heroes"
-        (click)="select(person)">
+        (click)="select(person)"
+        [class.selected]="person === selectedHero">
         <span>{{person.id}} </span>{{person.name}}
       </li>
     </ul>
