@@ -1,7 +1,10 @@
 import {Component} from 'angular2/core';
+import {Hero} from './hero';
+import {HeroDetailComponent} from './hero-detail.component';
 
 @Component({
   selector: 'my-app',
+  directives: [HeroDetailComponent],
   template: `
     <h1>{{ title }}</h1>
     <h2>My Heroes</h2>
@@ -12,13 +15,7 @@ import {Component} from 'angular2/core';
         <span>{{person.id}} </span>{{person.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{ selectedHero.name }} details!</h2>
-      <div>
-        <label>name: </label>
-        <div><input [(ngModel)]="selectedHero.name"></div>
-      </div>
-    </div>
+    <my-hero-detail [detailsHero]="selectedHero"></my-hero-detail>
   `
 })
 // one way data binding = display data in {{}}
@@ -30,12 +27,6 @@ export class AppComponent {
   select(currentHero: Hero): void {
     this.selectedHero = currentHero;
   }
-}
-
-//we'll start with a hero interface for our model. we don't need the hero to have any logic or actions, so an interface for an object is fine.
-interface Hero {
-  id: number;
-  name: string;
 }
 
 var HEROES: Hero[] = [
