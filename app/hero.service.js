@@ -30,7 +30,15 @@ System.register(['angular2/core', './mock-heroes'], function(exports_1, context_
                     return Promise.resolve(mock_heroes_1.HEROES);
                     // ***the service is for accessing data and sharing it with multiple components.
                 };
+                HeroService.prototype.getHeroesSlowly = function () {
+                    return new Promise(function (resolve) {
+                        return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
+                    } // 2 seconds
+                     // 2 seconds
+                    );
+                };
                 HeroService = __decorate([
+                    //import the hero symbol so we can define the new slow promise.
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
                 ], HeroService);
