@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
 import { HeroesListComponent } from './heroes-list.component';
+import { DashboardComponent } from './dashboard.component';
 import { HeroService } from './hero.service';
 //import all router services, directives, and the configuration decorator (similar to component decorator)
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
@@ -14,6 +15,12 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     path: '/heroes',
     name: 'Heroes',
     component: HeroesListComponent
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardComponent,
+    useAsDefault: true
   }
 ])
 // router component template stuff to add:
@@ -29,9 +36,12 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   template: `
     <h1>{{ title }}</h1>
     <a [routerLink]="['Heroes']">Heroes List</a>
+    <a [routerLink]="['Dashboard']">Dashboard</a>
     <router-outlet></router-outlet>
   `
 })
+// This is now a special type of component called a Router Component
+// The router displays each component immediately below the <router-outlet> as we navigate through the application.
 export class AppComponent {
   public title: string = 'Hero Tracker';
 }
