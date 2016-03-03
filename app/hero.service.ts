@@ -7,6 +7,7 @@ export class HeroService {
     // start with a method stub = blank method place holder.
     // data could come from anywhere here, web service, local storage, etc.
     return HEROES;
+    // ***the service is for accessing data and sharing it with multiple components.
   }
 }
 // naming convention: NameOfThingService = name-of-thing.service.ts
