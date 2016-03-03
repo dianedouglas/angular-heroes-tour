@@ -2,7 +2,12 @@ import {Injectable} from 'angular2/core';
 import {HEROES} from './mock-heroes';
 import {Hero} from './hero'; //import the hero symbol so we can define the new slow promise.
 
-@Injectable() // don't forget the parens here.
+@Injectable() // don't forget the parens here. calls a function to make this class available for injection.
+// service class lets multiple components share data and methods.
+// it is a provider for our top level AppComponent
+// we use it to get shared data by calling its getHeroes method on activation of the AppComponent
+// we do that by implementing the ngOnInit method in AppComponent.
+// ngOnInit is a Lifecycle Hook, in OnInit interface.
 export class HeroService {
   getHeroes() {
     // start with a method stub = blank method place holder.
