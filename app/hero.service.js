@@ -27,7 +27,7 @@ System.register(['angular2/core', './mock-heroes'], function(exports_1, context_
                 HeroService.prototype.getHeroes = function () {
                     // start with a method stub = blank method place holder.
                     // data could come from anywhere here, web service, local storage, etc.
-                    return mock_heroes_1.HEROES;
+                    return Promise.resolve(mock_heroes_1.HEROES);
                     // ***the service is for accessing data and sharing it with multiple components.
                 };
                 HeroService = __decorate([

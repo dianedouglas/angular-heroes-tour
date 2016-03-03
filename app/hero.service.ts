@@ -6,7 +6,7 @@ export class HeroService {
   getHeroes() {
     // start with a method stub = blank method place holder.
     // data could come from anywhere here, web service, local storage, etc.
-    return HEROES;
+    return Promise.resolve(HEROES);
     // ***the service is for accessing data and sharing it with multiple components.
   }
 }
