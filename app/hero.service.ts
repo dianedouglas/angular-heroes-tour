@@ -9,3 +9,6 @@ export class HeroService {
     return HEROES;
   }
 }
+// naming convention: NameOfThingService = name-of-thing.service.ts
+// lower dash case (kebab case) for file name with .service in it.
+// inside of file, name the class same as the file name in upper camel case with 'Service' in it.
