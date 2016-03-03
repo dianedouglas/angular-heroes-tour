@@ -22,7 +22,7 @@ import {OnInit} from 'angular2/core';
 })
 // one way data binding = display data in {{}}
 // 2 way data binding means we setup an input and an output at the same time using ngModel.
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title = 'Tour of Heroes';
   public selectedHero: Hero;
   public heroes: Hero[];
