@@ -66,7 +66,8 @@ System.register(['angular2/core', './heroes-list.component', './hero-detail.comp
                         selector: 'my-app',
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [router_1.ROUTER_PROVIDERS, hero_service_1.HeroService],
-                        template: "\n    <h1>{{ title }}</h1>\n    <a [routerLink]=\"['Heroes']\">Heroes List</a>\n    <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n    <router-outlet></router-outlet>\n  "
+                        styleUrls: ['app/app.component.css'],
+                        template: "\n    <h1>{{ title }}</h1>\n    <nav>\n      <a [routerLink]=\"['Heroes']\">Heroes List</a>\n      <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n    </nav>\n    <router-outlet></router-outlet>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

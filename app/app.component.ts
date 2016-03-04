@@ -40,10 +40,13 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   selector: 'my-app',
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS, HeroService], //promote service from the HeroesListComponent to the AppComponent. one instance at top.
+  styleUrls: ['app/app.component.css'],
   template: `
     <h1>{{ title }}</h1>
-    <a [routerLink]="['Heroes']">Heroes List</a>
-    <a [routerLink]="['Dashboard']">Dashboard</a>
+    <nav>
+      <a [routerLink]="['Heroes']">Heroes List</a>
+      <a [routerLink]="['Dashboard']">Dashboard</a>
+    </nav>
     <router-outlet></router-outlet>
   `
 })

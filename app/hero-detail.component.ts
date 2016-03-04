@@ -6,16 +6,8 @@ import { HeroService } from './hero.service';
 @Component({
   selector: 'my-hero-detail',
   inputs: ['hero: detailsHero'],
-  template: `
-  <div *ngIf="hero">
-    <h2>{{ hero.name }} details!</h2>
-    <div>
-      <label>name: </label>
-      <div><input [(ngModel)]="hero.name"></div>
-    </div>
-  </div>
-  <button (click)="goBack()">Back</button>
-  `
+  styleUrls: ['app/hero-detail.component.css'],
+  templateUrl: 'app/hero-detail.component.html'
 })
 export class HeroDetailComponent {
   hero: Hero;

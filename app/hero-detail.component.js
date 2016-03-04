@@ -45,7 +45,8 @@ System.register(['angular2/core', 'angular2/router', './hero.service'], function
                     core_1.Component({
                         selector: 'my-hero-detail',
                         inputs: ['hero: detailsHero'],
-                        template: "\n  <div *ngIf=\"hero\">\n    <h2>{{ hero.name }} details!</h2>\n    <div>\n      <label>name: </label>\n      <div><input [(ngModel)]=\"hero.name\"></div>\n    </div>\n  </div>\n  <button (click)=\"goBack()\">Back</button>\n  "
+                        styleUrls: ['app/hero-detail.component.css'],
+                        templateUrl: 'app/hero-detail.component.html'
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.RouteParams])
                 ], HeroDetailComponent);
