@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     // this is actually the same kind of link parameters array as we have used before:
     // <a [routerLink]="['Dashboard']">Dashboard</a> - here the routerLink property is holding an array with just one argument
     // since dashboard doesn't have any url parameters. Above we have to pass in the id of the hero.
-    // key of the object for each parameter matches the name of the one defined in the router.
+    // keys of the route parameter object matche the names defined in the router.
     this._router.navigate(link); // pass it to the router's navigate method.
   }
 }

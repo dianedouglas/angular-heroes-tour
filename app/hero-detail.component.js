@@ -38,11 +38,14 @@ System.register(['angular2/core', 'angular2/router', './hero.service'], function
                     var id = parseInt(this._routeParams.get('id'));
                     this._heroService.getHero(id).then(function (returnedHero) { return _this.hero = returnedHero; });
                 };
+                HeroDetailComponent.prototype.goBack = function () {
+                    window.history.back();
+                };
                 HeroDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'my-hero-detail',
                         inputs: ['hero: detailsHero'],
-                        template: "\n  <div *ngIf=\"hero\">\n    <h2>{{ hero.name }} details!</h2>\n    <div>\n      <label>name: </label>\n      <div><input [(ngModel)]=\"hero.name\"></div>\n    </div>\n  </div>\n  "
+                        template: "\n  <div *ngIf=\"hero\">\n    <h2>{{ hero.name }} details!</h2>\n    <div>\n      <label>name: </label>\n      <div><input [(ngModel)]=\"hero.name\"></div>\n    </div>\n  </div>\n  <button (click)=\"goBack()\">Back</button>\n  "
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.RouteParams])
                 ], HeroDetailComponent);

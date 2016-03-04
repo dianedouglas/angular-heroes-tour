@@ -14,6 +14,7 @@ import { HeroService } from './hero.service';
       <div><input [(ngModel)]="hero.name"></div>
     </div>
   </div>
+  <button (click)="goBack()">Back</button>
   `
 })
 export class HeroDetailComponent {
@@ -29,6 +30,9 @@ export class HeroDetailComponent {
     // nothing changes in the template, we want to display the hero the same way, we're just getting it using a param from the url rather than a function call on click from heroes list.
     let id = parseInt(this._routeParams.get('id'));
     this._heroService.getHero(id).then(returnedHero => this.hero = returnedHero);
+  }
+  goBack() {
+    window.history.back();
   }
 }
 //All of our component names end in "Component".
