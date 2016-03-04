@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero-detail.component', './hero.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './hero-detail.component', './hero.service', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_detail_component_1, hero_service_1;
+    var core_1, hero_detail_component_1, hero_service_1, router_1;
     var HeroesListComponent;
     return {
         setters:[
@@ -22,12 +22,17 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             HeroesListComponent = (function () {
-                function HeroesListComponent(_heroService) {
+                function HeroesListComponent(_heroService, _router) {
                     this._heroService = _heroService;
-                    // the parameter defines a private property of type HeroService called _heroService.
+                    this._router = _router;
+                    // the first parameter defines a private property of type HeroService called _heroService.
+                    // the second one defines a private _router property of type Router. 
                 }
                 HeroesListComponent.prototype.ngOnInit = function () {
                     this.getHeroes();
@@ -48,13 +53,17 @@ System.register(['angular2/core', './hero-detail.component', './hero.service'], 
                 HeroesListComponent.prototype.select = function (currentHero) {
                     this.selectedHero = currentHero;
                 };
+                HeroesListComponent.prototype.goToDetail = function () {
+                    var link = ['HeroDetail', { id: this.selectedHero.id }];
+                    this._router.navigate(link);
+                };
                 HeroesListComponent = __decorate([
                     core_1.Component({
                         selector: 'heroes-list',
                         directives: [hero_detail_component_1.HeroDetailComponent],
-                        template: "\n    <ul class=\"heroes\">\n      <li *ngFor=\"#person of heroes\"\n        (click)=\"select(person)\"\n        [class.selected]=\"person === selectedHero\">\n        <span>{{person.id}} </span>{{person.name}}\n      </li>\n    </ul>\n    <my-hero-detail [detailsHero]=\"selectedHero\"></my-hero-detail>\n  "
+                        template: "\n    <ul class=\"heroes\">\n      <li *ngFor=\"#person of heroes\"\n        (click)=\"select(person)\"\n        [class.selected]=\"person === selectedHero\">\n        <span>{{person.id}} </span>{{person.name}}\n      </li>\n    </ul>\n    <div *ngIf=\"selectedHero\">\n      <h2>\n        Check it out, you selected {{selectedHero.name | uppercase}}!\n      </h2>\n      <button (click)=\"goToDetail()\">View Details</button>\n    </div>\n  "
                     }), 
-                    __metadata('design:paramtypes', [hero_service_1.HeroService])
+                    __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
                 ], HeroesListComponent);
                 return HeroesListComponent;
             }());

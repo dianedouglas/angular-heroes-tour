@@ -3,6 +3,7 @@ import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroService} from './hero.service';
 import {OnInit} from 'angular2/core';
+import { Router } from 'angular2/router';
 
 @Component({
   selector: 'heroes-list',
@@ -15,16 +16,25 @@ import {OnInit} from 'angular2/core';
         <span>{{person.id}} </span>{{person.name}}
       </li>
     </ul>
-    <my-hero-detail [detailsHero]="selectedHero"></my-hero-detail>
+    <div *ngIf="selectedHero">
+      <h2>
+        Check it out, you selected {{selectedHero.name | uppercase}}!
+      </h2>
+      <button (click)="goToDetail()">View Details</button>
+    </div>
   `
 })
+// | uppercase is the uppercase pipe built into angular.  There's several of these that are useful for formatting data.
 // one way data binding = display data in {{}}
 // 2 way data binding means we setup an input and an output at the same time using ngModel.
 export class HeroesListComponent implements OnInit {
   public selectedHero: Hero;
   public heroes: Hero[];
-  constructor(private _heroService: HeroService) {
-    // the parameter defines a private property of type HeroService called _heroService.
+  constructor(
+    private _heroService: HeroService,
+    private _router: Router) {
+    // the first parameter defines a private property of type HeroService called _heroService.
+    // the second one defines a private _router property of type Router. 
   }
   ngOnInit() {
     this.getHeroes();
@@ -44,6 +54,10 @@ export class HeroesListComponent implements OnInit {
   }
   select(currentHero: Hero): void {
     this.selectedHero = currentHero;
+  }
+  goToDetail(){
+    let link = ['HeroDetail', { id: this.selectedHero.id }];
+    this._router.navigate(link);
   }
 }
 /*
