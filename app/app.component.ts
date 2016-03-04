@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
 import { HeroesListComponent } from './heroes-list.component';
+import { HeroDetailComponent } from './hero-detail.component';
 import { DashboardComponent } from './dashboard.component';
 import { HeroService } from './hero.service';
 //import all router services, directives, and the configuration decorator (similar to component decorator)
@@ -21,6 +22,12 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     name: 'Dashboard',
     component: DashboardComponent,
     useAsDefault: true
+  },
+  //parameterized route: The colon in the path means :id is a variable we will be passing in a value for.
+  {
+    path: '/details/:id',
+    name: 'HeroDetail',
+    component: HeroDetailComponent
   }
 ])
 // router component template stuff to add:

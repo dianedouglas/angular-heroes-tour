@@ -4,3 +4,5 @@ From the docs:
 Every Angular app has at least one root component, conventionally named AppComponent, that hosts the client user experience.
 
 Components are the basic building blocks of Angular applications. A component controls a portion of the screen — a view — through its associated template.
+
+Master-details pattern.

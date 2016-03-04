@@ -37,6 +37,9 @@ System.register(['angular2/core', './mock-heroes'], function(exports_1, context_
                      // 2 seconds
                     );
                 };
+                HeroService.prototype.getHero = function (id) {
+                    return Promise.resolve(mock_heroes_1.HEROES).then(function (heroes) { return heroes.filter(function (hero) { return hero.id === id; })[0]; });
+                };
                 HeroService = __decorate([
                     //import the hero symbol so we can define the new slow promise.
                     core_1.Injectable(), 

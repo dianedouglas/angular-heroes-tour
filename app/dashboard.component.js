@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './hero.service', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './hero.service'], function(exports_1, context
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_service_1;
+    var core_1, hero_service_1, router_1;
     var DashboardComponent;
     return {
         setters:[
@@ -19,11 +19,15 @@ System.register(['angular2/core', './hero.service'], function(exports_1, context
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             DashboardComponent = (function () {
-                function DashboardComponent(_heroService) {
+                function DashboardComponent(_heroService, _router) {
                     this._heroService = _heroService;
+                    this._router = _router;
                     this.heroes = [];
                     this.topHeroes = [];
                 }
@@ -37,14 +41,20 @@ System.register(['angular2/core', './hero.service'], function(exports_1, context
                         _this.topHeroes = returnedHeroes.slice(1, 5);
                     });
                 };
-                DashboardComponent.prototype.goToDetail = function () {
+                DashboardComponent.prototype.goToDetail = function (hero) {
+                    var link = ['HeroDetail', { id: hero.id }]; //route link parameters array.
+                    // this is actually the same kind of link parameters array as we have used before:
+                    // <a [routerLink]="['Dashboard']">Dashboard</a> - here the routerLink property is holding an array with just one argument
+                    // since dashboard doesn't have any url parameters. Above we have to pass in the id of the hero.
+                    // key of the object for each parameter matches the name of the one defined in the router.
+                    this._router.navigate(link); // pass it to the router's navigate method.
                 };
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'my-dashboard',
                         templateUrl: 'app/dashboard.component.html'
                     }), 
-                    __metadata('design:paramtypes', [hero_service_1.HeroService])
+                    __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
                 ], DashboardComponent);
                 return DashboardComponent;
             }());
