@@ -4,19 +4,26 @@ import {Component} from 'angular2/core';
   selector: 'my-app',
   template: `
   <h1>{{ title }}</h1>
-  <h3>Sample Task</h3>
-  <p>{{ testTask.description }}</p>
+  <div *ngFor="#currentTask of allTasks">
+    <p>{{ currentTask.description }}</p>
+  </div>
   `
 })
 export class AppComponent {
   public title: string = "To-Do List";
-  public testTask: Task = {
-    description: "Write to-do list.",
-    done: false
-  };
+  public allTasks: Task[] = TASKS;
 }
 
 interface Task {
   description: string;
   done: boolean;
 }
+
+var TASKS: Task[] = [
+  { "description": "Write to-do list.", "done": false },
+  { "description": "Learn the guitar solo from Fire by Jimi Hendrix.", "done": false },
+  { "description": "Clean the kitchen.", "done": false },
+  { "description": "Take a nap.", "done": true },
+  { "description": "Learn Kung Fu.", "done": false },
+  { "description": "Watch all three Lord of the Rings movies in a row", "done": true },
+]
