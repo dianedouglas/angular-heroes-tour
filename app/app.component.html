@@ -1,6 +1,6 @@
 <h1>{{ title }}</h1>
 <div class="not-done">  
-  <task-list [taskCollection]="allTasks | notDone"></task-list>
+  <task-list (onTaskSelected)="selectTask(task)" [taskCollection]="allTasks | notDone"></task-list>
 </div>
 <div class="done">  
   <task-list [taskCollection]="allTasks | done"></task-list>
