@@ -1,0 +1,13 @@
+.task {
+  border: 2px outset black;
+  margin: 2px 2px 2px 2px;
+  padding: 10px 10px 10px 10px;
+}
+
+label {
+  padding: 10px 10px 10px 10px;
+}
+
+.selected {
+  background-color: #97D2E6;
+}

@@ -7,8 +7,12 @@ import {Component} from 'angular2/core';
 export class AppComponent {
   public title: string = "To-Do List";
   public allTasks: Task[] = TASKS;
-  toggleDone(clickedTask: Task): void {
-    clickedTask.done = !clickedTask.done;
+  public selectedTask: Task;
+  toggleDone(checkedTask: Task): void {
+    checkedTask.done = !checkedTask.done;
+  }
+  selectTask(clickedTask: Task): void {
+    this.selectedTask = clickedTask;
   }
 }
 
