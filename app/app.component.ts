@@ -2,21 +2,24 @@ import {Component} from 'angular2/core';
 import {Task} from './task.model';
 import {TaskEditComponent} from './task-edit.component';
 import {TaskListComponent} from './task-list.component';
+import {DonePipe} from './done.pipe';
+import {NotDonePipe} from './not-done.pipe';
 
 @Component({
   selector: 'my-app',
   directives: [TaskEditComponent, TaskListComponent],
+  pipes: [DonePipe, NotDonePipe],
   templateUrl: 'app/app.component.html'
 })
 export class AppComponent {
   public title: string = "To-Do List";
   public allTasks: Task[] = TASKS;
-  public notDoneTasks: Task[];
-  public doneTasks: Task[];
   public selectedTask: Task;
-  constructor(){
-    this.doneTasks = this.allTasks.filter( (task) => task.done );
-    this.notDoneTasks = this.allTasks.filter( (task) => !task.done );
+  toggleDone(checkedTask: Task): void {
+    checkedTask.done = !checkedTask.done;
+  }
+  selectTask(clickedTask: Task): void {
+    this.selectedTask = clickedTask;
   }
 
   addTask(newDescription: HTMLInputElement): void {

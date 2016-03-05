@@ -14,11 +14,10 @@ import {Task} from './task.model';
 })
 export class TaskListComponent {
   public taskCollection: Task[];
-  public selectedTask: Task;
-  toggleDone(checkedTask: Task): void {
-    checkedTask.done = !checkedTask.done;
+  selectTask(){
+
   }
-  selectTask(clickedTask: Task): void {
-    this.selectedTask = clickedTask;
+  toggleDone(){
+    
   }
 }
