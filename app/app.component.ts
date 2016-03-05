@@ -12,7 +12,7 @@ export class TaskComponent {
 }
 
 @Component({
-  selector: 'tasks-list',
+  selector: 'task-list',
   inputs: ['taskList'],
   outputs: ['onTaskSelect'],
   directives: [TaskComponent],
@@ -41,10 +41,10 @@ export class TaskListComponent {
   directives: [TaskListComponent],
   template: `
   <h1>To-Do List</h1>
-  <tasks-list
+  <task-list
     [taskList]="tasks"
     (onTaskSelect)="taskWasSelected($event)">
-  </tasks-list>
+  </task-list>
   `
 })
 export class AppComponent { 
