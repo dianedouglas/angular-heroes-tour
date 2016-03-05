@@ -1,9 +1,5 @@
 <h1>{{ title }}</h1>
-<div *ngFor="#currentTask of allTasks" class="task" (click)="selectTask(currentTask)" [class.selected]="currentTask === selectedTask">
-  <input *ngIf="currentTask.done" type="checkbox" checked (click)="toggleDone(currentTask)"/>
-  <input *ngIf="!currentTask.done" type="checkbox" (click)="toggleDone(currentTask)"/>
-  <label>{{ currentTask.description }}</label>
-</div>
+<task-list [taskCollection]="allTasks"></task-list>
 <task-edit [task]="selectedTask"></task-edit>
 <div class="task-form">
   <h3>Create Task:</h3>

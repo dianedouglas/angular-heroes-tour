@@ -1,22 +1,17 @@
 import {Component} from 'angular2/core';
 import {Task} from './task.model';
 import {TaskEditComponent} from './task-edit.component';
+import {TaskListComponent} from './task-list.component';
 
 @Component({
   selector: 'my-app',
-  directives: [TaskEditComponent],
+  directives: [TaskEditComponent, TaskListComponent],
   templateUrl: 'app/app.component.html'
 })
 export class AppComponent {
   public title: string = "To-Do List";
   public allTasks: Task[] = TASKS;
   public selectedTask: Task;
-  toggleDone(checkedTask: Task): void {
-    checkedTask.done = !checkedTask.done;
-  }
-  selectTask(clickedTask: Task): void {
-    this.selectedTask = clickedTask;
-  }
   addTask(newDescription: HTMLInputElement): void {
     this.allTasks.push({
       "description": newDescription.value,
