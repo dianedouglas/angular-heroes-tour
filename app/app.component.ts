@@ -9,7 +9,6 @@ export class AppComponent {
   public allTasks: Task[] = TASKS;
   toggleDone(clickedTask: Task): void {
     clickedTask.done = !clickedTask.done;
-    console.log(TASKS);
   }
 }
 
