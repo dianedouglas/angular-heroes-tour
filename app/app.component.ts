@@ -1,7 +1,10 @@
 import {Component} from 'angular2/core';
+import {Task} from './task.model';
+import {TaskEditComponent} from './task-edit.component';
 
 @Component({
   selector: 'my-app',
+  directives: [TaskEditComponent],
   templateUrl: 'app/app.component.html'
 })
 export class AppComponent {
@@ -21,11 +24,6 @@ export class AppComponent {
     });
     newDescription.value = "";
   }
-}
-
-interface Task {
-  description: string;
-  done: boolean;
 }
 
 var TASKS: Task[] = [
