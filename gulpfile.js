@@ -9,9 +9,14 @@ gulp.task('serve', function() {
     }
   });
   gulp.watch(['*.js', 'app/*.js'], ['jsBuild']);
+  gulp.watch(['*.html'], ['htmlBuild']);
 });
 
 gulp.task('jsBuild', function(){
+  browserSync.reload();
+});
+
+gulp.task('htmlBuild', function(){
   browserSync.reload();
 });
 
