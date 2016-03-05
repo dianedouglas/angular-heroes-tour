@@ -14,6 +14,13 @@ export class AppComponent {
   selectTask(clickedTask: Task): void {
     this.selectedTask = clickedTask;
   }
+  addTask(newDescription: HTMLInputElement): void {
+    this.allTasks.push({
+      "description": newDescription.value,
+      "done": false
+    });
+    newDescription.value = "";
+  }
 }
 
 interface Task {

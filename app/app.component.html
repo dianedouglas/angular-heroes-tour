@@ -4,7 +4,12 @@
   <input *ngIf="!currentTask.done" type="checkbox" (click)="toggleDone(currentTask)"/>
   <label>{{ currentTask.description }}</label>
 </div>
-<div *ngIf="selectedTask">
-  <h3>Edit description:</h3>
-  <input type="text" [(ngModel)]="selectedTask.description" class="col-sm-12 input-lg"/>
+<div class="task-form" *ngIf="selectedTask">
+  <h3>Edit Description:</h3>
+  <input type="text" [(ngModel)]="selectedTask.description" class="col-sm-8 input-lg"/>
+</div>
+<div class="task-form">
+  <h3>Create Task:</h3>
+  <input placeholder="Description" class="col-sm-8 input-lg" #newDescription>
+  <button (click)="addTask(newDescription)" class="btn-success btn-lg">Add</button>
 </div>

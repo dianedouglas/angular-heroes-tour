@@ -11,3 +11,12 @@ label {
 .selected {
   background-color: #97D2E6;
 }
+
+.task-form {
+  margin: 30px 30px 30px 30px;
+  padding: 10px 10px 10px 10px;
+}
+
+button { 
+  margin-left: 10px;
+}
