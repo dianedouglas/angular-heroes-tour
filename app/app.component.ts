@@ -11,7 +11,22 @@ import {TaskListComponent} from './task-list.component';
 export class AppComponent {
   public title: string = "To-Do List";
   public allTasks: Task[] = TASKS;
+  public notDoneTasks: Task[];
+  public doneTasks: Task[];
   public selectedTask: Task;
+  constructor(){
+    this.doneTasks = this.allTasks.filter(
+      function(task){
+        return task.done;
+      }
+    );
+    this.notDoneTasks = this.allTasks.filter(
+      function(task){
+        return !task.done;
+      }
+    );
+  }
+
   addTask(newDescription: HTMLInputElement): void {
     this.allTasks.push({
       "description": newDescription.value,
@@ -29,3 +44,4 @@ var TASKS: Task[] = [
   { "description": "Learn Kung Fu.", "done": false },
   { "description": "Watch all three Lord of the Rings movies in a row", "done": true },
 ]
+

@@ -1,5 +1,10 @@
 <h1>{{ title }}</h1>
-<task-list [taskCollection]="allTasks"></task-list>
+<div class="not-done">  
+<task-list [taskCollection]="notDoneTasks"></task-list>
+</div>
+<div class="done">  
+  <task-list [taskCollection]="doneTasks"></task-list>
+</div>
 <task-edit [task]="selectedTask"></task-edit>
 <div class="task-form">
   <h3>Create Task:</h3>
