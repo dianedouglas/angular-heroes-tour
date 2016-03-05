@@ -1,23 +1,36 @@
 import {Component, EventEmitter} from 'angular2/core';
 
 @Component({
+  selector: 'task-display',
+  inputs: ['task'],
+  template: `
+  <h3>{{ task.description }}</h3>
+  `
+})
+export class TaskComponent {
+  public task: Task;
+}
+
+@Component({
   selector: 'tasks-list',
   inputs: ['taskList'],
   outputs: ['onTaskSelect'],
+  directives: [TaskComponent],
   template: `
-  <h3 *ngFor="#task of taskList" (click)="taskClicked(task)">
-    {{ task.description }}
-  </h3>
+  <task-display *ngFor="#currentTask of taskList" 
+      [task]="currentTask"
+      (click)="taskClicked(currentTask)">
+  </task-display>
   `
 })
-export class TasksList {
+export class TaskListComponent {
   public taskList: Task[];
-  public onTaskSelect: EventEmitter<Task>;
   public currentTask: Task;
+  public onTaskSelect: EventEmitter<Task>;
   constructor(){
-    this.onTaskSelect = new EventEmitter();
+    this.onTaskSelect = new EventEmitter();;
   }
-  taskClicked(task: Task) {
+  taskClicked(task: Task): void {
     this.currentTask = task;
     this.onTaskSelect.emit(task);
   }
@@ -25,12 +38,12 @@ export class TasksList {
 
 @Component({
   selector: 'my-app',
-  directives: [TasksList],
+  directives: [TaskListComponent],
   template: `
   <h1>To-Do List</h1>
   <tasks-list
     [taskList]="tasks"
-    (onTaskSelect)="taskWasSelected($event, task)">
+    (onTaskSelect)="taskWasSelected($event)">
   </tasks-list>
   `
 })
@@ -45,7 +58,7 @@ export class AppComponent {
     ];
   }
   taskWasSelected(task: Task): void {
-    console.log(task);
+    console.log('app component received custom event: ', task);
   }
 }
 
