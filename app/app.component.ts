@@ -4,7 +4,8 @@ import {Component} from 'angular2/core';
   selector: 'my-app',
   template: `
   <h1>{{ title }}</h1>
-  <div *ngFor="#currentTask of allTasks">
+  <div *ngFor="#currentTask of allTasks; #i = index">
+    <h3>Task #{{ i + 1 }}:</h3>
     <p>{{ currentTask.description }}</p>
   </div>
   `
