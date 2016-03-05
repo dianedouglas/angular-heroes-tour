@@ -4,3 +4,7 @@
   <input *ngIf="!currentTask.done" type="checkbox" (click)="toggleDone(currentTask)"/>
   <label>{{ currentTask.description }}</label>
 </div>
+<div *ngIf="selectedTask">
+  <h3>Edit description:</h3>
+  <input type="text" [(ngModel)]="selectedTask.description" class="col-sm-12 input-lg"/>
+</div>
