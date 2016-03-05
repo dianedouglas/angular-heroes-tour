@@ -15,16 +15,8 @@ export class AppComponent {
   public doneTasks: Task[];
   public selectedTask: Task;
   constructor(){
-    this.doneTasks = this.allTasks.filter(
-      function(task){
-        return task.done;
-      }
-    );
-    this.notDoneTasks = this.allTasks.filter(
-      function(task){
-        return !task.done;
-      }
-    );
+    this.doneTasks = this.allTasks.filter( (task) => task.done );
+    this.notDoneTasks = this.allTasks.filter( (task) => !task.done );
   }
 
   addTask(newDescription: HTMLInputElement): void {
