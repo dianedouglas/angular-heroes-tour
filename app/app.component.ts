@@ -1,12 +1,37 @@
-import {Component} from 'angular2/core';
+import {Component, EventEmitter} from 'angular2/core';
+
+@Component({
+  selector: 'tasks-list',
+  inputs: ['taskList'],
+  outputs: ['onTaskSelect'],
+  template: `
+  <h3 *ngFor="#task of taskList" (click)="taskClicked(task)">
+    {{ task.description }}
+  </h3>
+  `
+})
+export class TasksList {
+  public taskList: Task[];
+  public onTaskSelect: EventEmitter<Task>;
+  public currentTask: Task;
+  constructor(){
+    this.onTaskSelect = new EventEmitter();
+  }
+  taskClicked(task: Task) {
+    this.currentTask = task;
+    this.onTaskSelect.emit(task);
+  }
+}
 
 @Component({
   selector: 'my-app',
+  directives: [TasksList],
   template: `
   <h1>To-Do List</h1>
-  <h3 *ngFor="#task of tasks" (click)="taskWasSelected(task)">
-    {{ task.description }}
-  </h3>
+  <tasks-list
+    [taskList]="tasks"
+    (onTaskSelect)="taskWasSelected($event, task)">
+  </tasks-list>
   `
 })
 export class AppComponent { 
