@@ -2,7 +2,10 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'my-app',
-  template: '<h1>To-Do List</h1>'
+  template: `
+  <h1>To-Do List</h1>
+  <h3>{{ task.description }}<h3>
+  `
 })
 export class AppComponent { 
   public task: Task;
