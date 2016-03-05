@@ -7,6 +7,10 @@ import {Component} from 'angular2/core';
 export class AppComponent {
   public title: string = "To-Do List";
   public allTasks: Task[] = TASKS;
+  toggleDone(clickedTask: Task): void {
+    clickedTask.done = !clickedTask.done;
+    console.log(TASKS);
+  }
 }
 
 interface Task {

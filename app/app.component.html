@@ -2,8 +2,8 @@
 <div *ngFor="#currentTask of allTasks">
   <div class="checkbox">
     <label>
-      <input *ngIf="currentTask.done" type="checkbox" checked>
-      <input *ngIf="!currentTask.done" type="checkbox">
+      <input *ngIf="currentTask.done" type="checkbox" checked (click)="toggleDone(currentTask)">
+      <input *ngIf="!currentTask.done" type="checkbox" (click)="toggleDone(currentTask)">
       {{ currentTask.description }}
     </label>
   </div>
