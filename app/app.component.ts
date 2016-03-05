@@ -2,13 +2,7 @@ import {Component} from 'angular2/core';
 
 @Component({
   selector: 'my-app',
-  template: `
-  <h1>{{ title }}</h1>
-  <div *ngFor="#currentTask of allTasks; #i = index">
-    <h3>Task #{{ i + 1 }}:</h3>
-    <p>{{ currentTask.description }}</p>
-  </div>
-  `
+  templateUrl: 'app/app.component.html'
 })
 export class AppComponent {
   public title: string = "To-Do List";
