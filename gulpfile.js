@@ -19,14 +19,22 @@ var lib = require('bower-files')({
 var shell = require('gulp-shell');
 var tslint = require("gulp-tslint");
 
-gulp.task('jsBower', function () {
+gulp.task('jsBowerClean', function(){
+  return del(['./build/js/vendor.min.js']);
+});
+
+gulp.task('jsBower', ['jsBowerClean'], function () {
   return gulp.src(lib.ext('js').files)
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('cssBower', function () {
+gulp.task('cssBowerClean', function(){
+  return del(['./build/css/vendor.css']);
+});
+
+gulp.task('cssBower', ['cssBowerClean'], function () {
   return gulp.src(lib.ext('css').files)
     .pipe(concat('vendor.css'))
     .pipe(gulp.dest('./build/css'));
@@ -44,6 +52,7 @@ gulp.task('serve', function() {
   gulp.watch(['*.html'], ['htmlBuild']);
   gulp.watch(['*.css'], ['cssBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
+  gulp.watch(['app/*.ts'], ['ts']);
 });
 
 gulp.task('jsBuild', function(){
@@ -62,18 +71,21 @@ gulp.task('bowerBuild', ['jsBower', 'cssBower'], function(){
   browserSync.reload();
 });
 
-gulp.task('clean', function(){
-  return del(['build', 'app/*.js', 'app/*.js.map']);
+
+
+gulp.task('tsClean', function(){
+  return del(['app/*.js', 'app/*.js.map']);
 });
 
-gulp.task('ts', ['clean'], shell.task([
+gulp.task('ts', ['tsClean'], shell.task([
   'tsc'
 ]));
 
+
+
 gulp.task('build', ['ts'], function(){
   // we can use the buildProduction environment variable here later.
-  gulp.start('jsBower');
-  gulp.start('cssBower');
+  gulp.start('bowerBuild');
 });
  
 gulp.task("tslint", () =>
