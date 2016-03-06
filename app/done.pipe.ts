@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from 'angular2/core';
 import {Task} from './task.model';
 
 @Pipe({
-  name: "done"
+  name: "done",
+  pure: false
 })
 export class DonePipe implements PipeTransform {
   transform(input: Task[], args) {
