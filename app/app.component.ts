@@ -28,6 +28,7 @@ export class AppComponent {
   }
   taskWasSelected(task: Task): void {
     console.log('app component received custom event: ', task);
+    console.log(this.tasks);
   }
   createTask(newDescription: string): void {
     console.log(newDescription);
