@@ -9,6 +9,11 @@ import {EditTaskDetailsComponent} from './edit-task-details.component';
   outputs: ['onTaskSelect'],
   directives: [TaskComponent, EditTaskDetailsComponent],
   template: `
+  <select (change)="onChange($event.target.value)">
+    <option value="all">Show All</option>
+    <option value="done">Show Done</option>
+    <option value="notDone">Show Not Done</option>
+  </select>
   <task-display *ngFor="#currentTask of taskList" 
       [task]="currentTask"
       (click)="taskClicked(currentTask)"
@@ -21,11 +26,15 @@ export class TaskListComponent {
   public taskList: Task[];
   public selectedTask: Task;
   public onTaskSelect: EventEmitter<Task>;
+  public filterDone;
   constructor(){
     this.onTaskSelect = new EventEmitter();;
   }
   taskClicked(task: Task): void {
     this.selectedTask = task;
     this.onTaskSelect.emit(task);
+  }
+  onChange(filterOption) {
+    console.log(filterOption);
   }
 }
