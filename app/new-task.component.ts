@@ -17,5 +17,6 @@ export class NewTaskComponent {
   }
   addTask(newDescription: HTMLInputElement){
     this.onSubmitNewTask.emit(newDescription.value);
+    newDescription.value = "";
   }
 }
