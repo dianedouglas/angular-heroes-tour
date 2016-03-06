@@ -8,7 +8,6 @@
 }
 
 .go-button {
-  margin-left: 10px;
   margin-bottom: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -16,4 +15,9 @@
 
 .task-form {
   margin-bottom: 80px;
+  margin-right: 10px;
+}
+
+.input-lg {
+  margin-right: 10px;
 }

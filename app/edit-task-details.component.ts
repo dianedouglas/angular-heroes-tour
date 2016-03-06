@@ -8,6 +8,9 @@ import {Task} from './task.model';
   <div class="task-form" *ngIf="task">
     <h3>Edit Description:</h3>
     <input type="text" [(ngModel)]="task.description" class="col-sm-8 input-lg"/>
+    <div class="detail-display">
+      <h5>Task Created:  {{task.timeCreated}}</h5>
+    </div>
   </div>
   `
 })
