@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var utilities = require('gulp-util');
+var buildProduction = utilities.env.production;
+var del = require('del');
 var browserSync = require('browser-sync').create();
 var lib = require('bower-files')({
   "overrides":{
@@ -13,6 +16,7 @@ var lib = require('bower-files')({
     }
   }
 });
+var shell = require('gulp-shell');
 
 gulp.task('jsBower', function () {
   return gulp.src(lib.ext('js').files)
@@ -56,6 +60,22 @@ gulp.task('cssBuild', function(){
 gulp.task('bowerBuild', ['jsBower', 'cssBower'], function(){
   browserSync.reload();
 });
+
+gulp.task('clean', function(){
+  return del(['build', 'app/*.js', 'app/*.js.map']);
+});
+
+gulp.task('ts', ['clean'], shell.task([
+  'tsc'
+]));
+
+gulp.task('build', ['ts'], function(){
+  // we can use the buildProduction environment variable here later.
+  gulp.start('jsBower');
+  gulp.start('cssBower');
+});
+
+
 
 //setup:
 /*
