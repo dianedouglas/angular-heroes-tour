@@ -13,8 +13,7 @@ import {NewTaskComponent} from './new-task.component';
       [taskList]="tasks"
       (onTaskSelect)="taskWasSelected($event)">
     </task-list>
-    <new-task (onSubmitNewTask)="createTask($event)">
-    </new-task>
+    <new-task (onSubmitNewTask)="createTask($event)"></new-task>
   </div>
   `
 })

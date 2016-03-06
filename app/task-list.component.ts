@@ -11,11 +11,13 @@ import {DonePipe} from './done.pipe';
   pipes: [DonePipe],
   directives: [TaskComponent, EditTaskDetailsComponent],
   template: `
-  <select (change)="onChange($event.target.value)">
-    <option value="all">Show All</option>
-    <option value="done">Show Done</option>
-    <option value="notDone" selected="selected">Show Not Done</option>
-  </select>
+  <div class="filter">
+    <select (change)="onChange($event.target.value)">
+      <option value="all">Show All</option>
+      <option value="done">Show Done</option>
+      <option value="notDone" selected="selected">Show Not Done</option>
+    </select>
+  </div>
   <task-display *ngFor="#currentTask of taskList | done:filterDone" 
       [task]="currentTask"
       (click)="taskClicked(currentTask)"

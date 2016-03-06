@@ -10,6 +10,7 @@ gulp.task('serve', function() {
   });
   gulp.watch(['*.js', 'app/*.js'], ['jsBuild']);
   gulp.watch(['*.html'], ['htmlBuild']);
+  gulp.watch(['*.css'], ['cssBuild']);
 });
 
 gulp.task('jsBuild', function(){
@@ -17,6 +18,10 @@ gulp.task('jsBuild', function(){
 });
 
 gulp.task('htmlBuild', function(){
+  browserSync.reload();
+});
+
+gulp.task('cssBuild', function(){
   browserSync.reload();
 });
 

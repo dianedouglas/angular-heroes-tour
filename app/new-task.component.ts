@@ -5,9 +5,11 @@ import {Task} from './task.model';
   selector: 'new-task',
   outputs: ['onSubmitNewTask'],
   template: `
-  <h3>Create Task:</h3>
-  <input placeholder="Description" class="col-sm-8 input-lg" #newDescription>
-  <button (click)="addTask(newDescription)" class="btn-success btn-lg">Add</button>
+  <div class="task-form">
+    <h3>Create Task:</h3>
+    <input placeholder="Description" class="col-sm-8 input-lg" #newDescription>
+    <button (click)="addTask(newDescription)" class="btn-success btn-lg go-button">Add</button>
+  </div>
   `
 })
 export class NewTaskComponent {
