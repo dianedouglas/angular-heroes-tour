@@ -14,7 +14,7 @@ import {DonePipe} from './done.pipe';
   <select (change)="onChange($event.target.value)">
     <option value="all">Show All</option>
     <option value="done">Show Done</option>
-    <option value="notDone">Show Not Done</option>
+    <option value="notDone" selected="selected">Show Not Done</option>
   </select>
   <task-display *ngFor="#currentTask of taskList | done:filterDone" 
       [task]="currentTask"
@@ -28,7 +28,7 @@ export class TaskListComponent {
   public taskList: Task[];
   public selectedTask: Task;
   public onTaskSelect: EventEmitter<Task>;
-  public filterDone: string;
+  public filterDone: string = "notDone";
   constructor(){
     this.onTaskSelect = new EventEmitter();;
   }
