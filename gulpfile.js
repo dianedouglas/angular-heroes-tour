@@ -17,6 +17,7 @@ var lib = require('bower-files')({
   }
 });
 var shell = require('gulp-shell');
+var tslint = require("gulp-tslint");
 
 gulp.task('jsBower', function () {
   return gulp.src(lib.ext('js').files)
@@ -74,8 +75,12 @@ gulp.task('build', ['ts'], function(){
   gulp.start('jsBower');
   gulp.start('cssBower');
 });
-
-
+ 
+gulp.task("tslint", () =>
+    gulp.src("source.ts")
+        .pipe(tslint())
+        .pipe(tslint.report("verbose"))
+);
 
 //setup:
 /*
