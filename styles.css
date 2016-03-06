@@ -21,3 +21,10 @@
 .input-lg {
   margin-right: 10px;
 }
+
+.img-thumbnail { 
+  min-height:35px; 
+  height:35px;   
+  min-width:35px; 
+  width:35px; 
+}

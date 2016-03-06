@@ -6,6 +6,7 @@ import {Task} from './task.model';
     inputs: ['task'],
   template: `
   <div>
+    <img [src]="imgUrl" class="img-thumbnail">
     <input *ngIf="task.done" type="checkbox" checked (click)="toggleDone(false)"/>
     <input *ngIf="!task.done" type="checkbox" (click)="toggleDone(true)"/>
     <label>{{ task.description }}</label>  
@@ -14,6 +15,7 @@ import {Task} from './task.model';
 })
 export class TaskComponent {
   public task: Task;
+  public imgUrl: string = './../resources/images/star.png';
   toggleDone(setState: boolean){
     this.task.done = setState;
   }
