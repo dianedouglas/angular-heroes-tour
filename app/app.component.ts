@@ -7,13 +7,15 @@ import {NewTaskComponent} from './new-task.component';
   selector: 'my-app',
   directives: [TaskListComponent, NewTaskComponent],
   template: `
-  <h1>To-Do List</h1>
-  <task-list
-    [taskList]="tasks"
-    (onTaskSelect)="taskWasSelected($event)">
-  </task-list>
-  <new-task (onSubmitNewTask)="createTask($event)">
-  </new-task>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <task-list
+      [taskList]="tasks"
+      (onTaskSelect)="taskWasSelected($event)">
+    </task-list>
+    <new-task (onSubmitNewTask)="createTask($event)">
+    </new-task>
+  </div>
   `
 })
 export class AppComponent { 
