@@ -96,6 +96,7 @@ gulp.task('ts', ['tsClean'], shell.task([
 gulp.task('build', ['ts'], function(){
   // we can use the buildProduction environment variable here later.
   gulp.start('bowerBuild');
+  gulp.start('cssBuild');
 });
  
 gulp.task("tslint", () =>
@@ -108,9 +109,12 @@ gulp.task("tslint", () =>
 /*
 - clone repo
 - npm install
+- bower install
 - npm install gulp -g
+- gem install sass
 - npm install typescript -g
 - apm install atom-typescript
 - atom .
-- gulp serve
+- gulp build
+- gulp serve / (npm start?)
 */
